@@ -7,6 +7,7 @@ class GameModel extends Model {
     id: number | undefined
     name: string | undefined
     studioId: number | undefined
+    price: number | undefined
 }
 
 GameModel.init(
@@ -24,6 +25,10 @@ GameModel.init(
         studioId: {
             type: DataTypes.INTEGER,
             allowNull: true
+        },
+        price: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         }
     },
 

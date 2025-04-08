@@ -1,12 +1,17 @@
 import express from 'express'
 import { getALL, getUserById, createUser, updateUser, destroyUserById } from '../controllers/UserController'
  
+import { authMiddleware } from '../middleware/authMiddleware' 
+
 const router = express.Router();
 
-router.get('/users', getALL)
-router.get('/users/:id', getUserById)
+// rota publica 
 router.post('/users', createUser)
-router.put('/users/:id', updateUser)
-router.delete('/users/:id', destroyUserById)
+
+
+router.get('/users',  authMiddleware, getALL)
+router.get('/users/:id', getUserById)
+router.put('/users/:id',authMiddleware, updateUser)
+router.delete('/users/:id',authMiddleware, destroyUserById)
 
 export default router;

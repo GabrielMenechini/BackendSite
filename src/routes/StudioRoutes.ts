@@ -1,5 +1,6 @@
 import express from 'express'
 import { getALL, getStudioById, createStudio, updateStudio, destroyStudioById } from '../controllers/StudioController'
+import { authMiddleware } from '../middleware/authMiddleware';
  
 const router = express.Router();
 

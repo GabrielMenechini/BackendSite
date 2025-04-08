@@ -68,6 +68,7 @@ export const updateGame = async (
         user.name = name  
         const { id } = req.body;
         user.studioId = id;
+        user.price = req.body.price;
         await user.save()
 
 

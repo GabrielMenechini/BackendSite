@@ -8,6 +8,7 @@ class UserModel extends Model {
     name: string | undefined;
     email: string | undefined;
     password: string | undefined;
+    updatedBy: number | undefined;
 
     public async hashPassword( ) {
         this.password = await bcrypt.hash(this.password!, 10)
@@ -39,6 +40,10 @@ UserModel.init({
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    UpdatedBy: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 },
     {

@@ -50,7 +50,10 @@ export const updateUser = async (
     res: Response) => {
 
     
-        try {  const { name, email, password } = req.body
+    try {
+        const { name, email, password, } = req.body
+        const loggedUser = req.body.user
+        console.log('logged',loggedUser)
         if (!name || !email || !password) {
             return res.status(400)
                                 .json({error: 'Values required'})
@@ -66,11 +69,12 @@ export const updateUser = async (
             user.name = name
             user.email = email
             user.password = password
+            user.updatedBy = loggedUser.user.id
            
         await user.save()
 
 
-     await user.save()
+     
     res.status(201).json(user)
 
     } catch (error) {
